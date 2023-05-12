@@ -62,6 +62,7 @@ class _VertexAICommon(BaseModel):
     @classmethod
     def _try_init_vertexai(cls, values: Dict) -> None:
         allowed_params = ["project", "location", "credentials"]
+        print("_try_init_vertexai", values)
         params = {k: v for k, v in values.items() if v in allowed_params}
         print("allowed params", params)
         init_vertexai(**params)
@@ -74,6 +75,7 @@ class VertexAI(_VertexAICommon, LLM):
     @root_validator()
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that the python package exists in environment."""
+        print("validate_environment", values)
         cls._try_init_vertexai(values)
         try:
             from vertexai.preview.language_models import TextGenerationModel
