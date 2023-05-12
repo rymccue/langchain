@@ -41,7 +41,7 @@ def init_vertexai(
     project_id: Optional[str] = None,
     location: Optional[str] = None,
     staging_bucket: Optional[str] = None,
-    credentials_path: Optional[str] = None,
+    credentials: Optional[str] = None,
 ) -> None:
     """Inits vertexai.
 
@@ -52,7 +52,7 @@ def init_vertexai(
             when making API calls.
         credentials_path: Tje local path to the json file with credentials.
     """
-    credentials = _create_credentials_from_file(credentials_path)
+    creds = google.cloud.client.Credentials.from_service_account_info(credentials)
     try:
         import vertexai
 
@@ -60,7 +60,7 @@ def init_vertexai(
             project=project_id,
             location=location,
             staging_bucket=staging_bucket,
-            credentials=credentials,
+            credentials=creds,
         )
     except ImportError:
         raise_vertex_import_error
