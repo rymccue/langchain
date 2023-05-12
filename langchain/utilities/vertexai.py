@@ -54,6 +54,7 @@ def init_vertexai(
     """
     from google.oauth2 import service_account
     import json
+    print(credentials)
     creds = service_account.Credentials.from_service_account_info(json.loads(credentials))
     try:
         import vertexai
