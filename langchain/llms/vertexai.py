@@ -63,6 +63,7 @@ class _VertexAICommon(BaseModel):
     def _try_init_vertexai(cls, values: Dict) -> None:
         allowed_params = ["project", "location", "credentials"]
         params = {k: v for k, v in values.items() if v in allowed_params}
+        print("allowed params", params)
         init_vertexai(**params)
         return None
 
