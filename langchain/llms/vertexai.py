@@ -31,7 +31,7 @@ class _VertexAICommon(BaseModel):
     """The default GCP project to use when making Vertex API calls."""
     location: Optional[str] = None
     """The default location to use when making API calls."""
-    credentials_json_path: Optional[str] = None
+    credentials: Optional[str] = None
     """The default staging bucket to use to stage artifacts when making API calls."""
 
     @property
@@ -61,7 +61,7 @@ class _VertexAICommon(BaseModel):
 
     @classmethod
     def _try_init_vertexai(cls, values: Dict) -> None:
-        allowed_params = ["project", "location", "credentials_json_path"]
+        allowed_params = ["project", "location", "credentials"]
         params = {k: v for k, v in values.items() if v in allowed_params}
         init_vertexai(**params)
         return None
