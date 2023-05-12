@@ -38,7 +38,7 @@ def raise_vertex_import_error() -> ValueError:
 
 
 def init_vertexai(
-    project_id: Optional[str] = None,
+    project: Optional[str] = None,
     location: Optional[str] = None,
     staging_bucket: Optional[str] = None,
     credentials: Optional[str] = None,
@@ -60,7 +60,7 @@ def init_vertexai(
         import vertexai
 
         vertexai.init(
-            project=project_id,
+            project=project,
             location=location,
             staging_bucket=staging_bucket,
             credentials=creds,
