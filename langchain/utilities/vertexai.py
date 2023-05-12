@@ -52,6 +52,7 @@ def init_vertexai(
             when making API calls.
         credentials_path: Tje local path to the json file with credentials.
     """
+    from google.oauth2 import service_account
     creds = service_account.Credentials.from_service_account_info(credentials)
     try:
         import vertexai
